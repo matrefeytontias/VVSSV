@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	<meta title="VVSSV" package="com.matrefeytontias.VVSSV" version="1.0.0" company="Matrefeytontias" />
+
+ 	<app file="VVSSV" main="Main" path="bin" />
+
+	<window fps="60" background="0x333333" />
+	<window width="640" height="480" resizable="false" unless="mobile" />
+	<window fullscreen="true" if="mobile"/>
+	<window orientation="landscape" vsync="true" antialiasing="0" if="cpp" />
+
+	<source path="src" />
+
+	<haxelib name="HaxePunk" />
+
+	<assets path="assets/graphics" rename="graphics" include="*.png|*.jpg" />
+	<assets path="assets/audio" rename="audio" include="*.mp3" if="flash" />
+	<assets path="assets/audio" rename="audio" include="*.wav|*.ogg" unless="flash" />
+	<assets path="assets/font" rename="font" include="*.ttf" />
+	<assets path="assets/levels" rename="levels" include="*.json" />
+
+	<icon path="assets/icon.png" />
+</project>
