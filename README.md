@@ -1,4 +1,11 @@
-### Half-assed README
+## Half-assed README
+
+### Play
+
+It's all there on GameJolt, easy : http://gamejolt.com/games/vvssv-veni-vidi-still-struggling-to-vici/226283
+You can also download the OST there (or here, it's `assets/audio/mp3/idk.mp3`).
+
+### Build
 
 To build, you need Haxe version 3.3.0 or later, as well as HaxePunk 2.6.0 . Summary of commands to be ran if you start fresh :
 
