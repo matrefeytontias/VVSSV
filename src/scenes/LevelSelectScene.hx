@@ -9,7 +9,6 @@ import com.haxepunk.graphics.Graphiclist;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.graphics.Text;
 import com.haxepunk.utils.Data;
-import com.haxepunk.utils.Input;
 
 class LevelSelectScene extends Scene
 {
@@ -113,7 +112,7 @@ class VolumeBarWidget extends Entity
 	
 	override public function update()
 	{
-		if(Input.mouseDown && collidePoint(x, y, HXP.screen.mouseX, HXP.screen.mouseY))
+		if(Controls.pressing && collidePoint(x, y, HXP.screen.mouseX, HXP.screen.mouseY))
 		{
 			fill.scaleX = HXP.screen.mouseX - (x + fill.x);
 			HXP.volume = fill.scaleX / 100;

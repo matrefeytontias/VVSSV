@@ -2,7 +2,6 @@ import com.haxepunk.Entity;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Text;
 import com.haxepunk.graphics.Text.TextOptions;
-import com.haxepunk.utils.Input;
 
 class VText extends Entity
 {
@@ -53,7 +52,7 @@ class VText extends Entity
 				t.text = string;
 			}
 			
-			if(hovering && Input.mouseReleased)
+			if(hovering && Controls.released)
 				cb(name);
 		}
 		

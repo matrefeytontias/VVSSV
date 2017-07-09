@@ -36,6 +36,14 @@ class Main extends Engine
 		HXP.scene = new IntroCutscene();
 	}
 
+#if (android || ios)
+	override public function update()
+	{
+		super.update();
+		Controls.update();
+	}
+#end
+	
 	public static function getTileImage(t:Int)
 	{
 		return new Image(tileset, new Rectangle((t % 8) * 8, Std.int(t / 8) * 8, 8, 8));

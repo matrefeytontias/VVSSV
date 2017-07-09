@@ -3,7 +3,6 @@ package entities;
 import com.haxepunk.Entity;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Stamp;
-import com.haxepunk.utils.Input;
 
 class BackButton extends Entity
 {
@@ -20,7 +19,7 @@ class BackButton extends Entity
 	
 	override public function update()
 	{
-		if(collidePoint(x, y, scene.mouseX, scene.mouseY) && Input.mousePressed)
+		if(collidePoint(x, y, scene.mouseX, scene.mouseY) && Controls.pressed)
 		{
 			HXP.screen.scale = 1;
 			HXP.scene = new scenes.LevelSelectScene();

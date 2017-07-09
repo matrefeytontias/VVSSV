@@ -113,14 +113,15 @@ class Player extends Entity
 			
 			if(gravityX == 0)
 			{
-				if(Controls.left)
+				var l = Controls.left, r = Controls.right;
+				if(l && !r)
 				{
 					moveBy(-SPEED, 0, GameScene.solidTypes);
 					gfx.flipped = true;
 					if(grounded)
 						gfx.play("walk");
 				}
-				else if(Controls.right)
+				else if(r && !l)
 				{
 					moveBy(SPEED, 0, GameScene.solidTypes);
 					gfx.flipped = false;
