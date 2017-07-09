@@ -11,8 +11,6 @@ import com.haxepunk.graphics.Spritemap;
 import com.haxepunk.graphics.Text;
 import com.haxepunk.tweens.misc.NumTween;
 import com.haxepunk.tweens.sound.SfxFader;
-import com.haxepunk.utils.Input;
-import com.haxepunk.utils.Key;
 
 import openfl.geom.Rectangle;
 
@@ -100,7 +98,7 @@ class IntroCutscene extends Scene
 			{
 				if(!dialog.busy)
 				{
-					if(Input.released(Key.SPACE))
+					if(Controls.space)
 					{
 						Main.getSound("menuSelect").play();
 						if(dialog.next())
@@ -129,7 +127,7 @@ class IntroCutscene extends Scene
 			player.x += 1.5;
 		}
 		
-		if(Input.check(Key.S))
+		if(Controls.skip)
 			launchTitleScreen();
 	}
 	

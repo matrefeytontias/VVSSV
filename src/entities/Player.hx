@@ -6,8 +6,6 @@ import com.haxepunk.Scene;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.graphics.Spritemap;
 import com.haxepunk.masks.Imagemask;
-import com.haxepunk.utils.Input;
-import com.haxepunk.utils.Key;
 
 import openfl.display.BitmapData;
 import openfl.geom.Rectangle;
@@ -47,10 +45,6 @@ class Player extends Entity
 		mask = new Imagemask(cgfx);
 		type = "player";
 		layer = 0;
-		Input.define("down", [ Key.S, Key.DOWN ]);
-		Input.define("left", [ Key.A, Key.Q, Key.LEFT ]);
-		Input.define("right", [ Key.D, Key.RIGHT ]);
-		Input.define("up", [ Key.W, Key.Z, Key.UP ]);
 		hurt = true;
 		switchMap();
 	}
@@ -119,14 +113,14 @@ class Player extends Entity
 			
 			if(gravityX == 0)
 			{
-				if(Input.check("left"))
+				if(Controls.left)
 				{
 					moveBy(-SPEED, 0, GameScene.solidTypes);
 					gfx.flipped = true;
 					if(grounded)
 						gfx.play("walk");
 				}
-				else if(Input.check("right"))
+				else if(Controls.right)
 				{
 					moveBy(SPEED, 0, GameScene.solidTypes);
 					gfx.flipped = false;
@@ -138,14 +132,14 @@ class Player extends Entity
 			}
 			else // gravityY == 0
 			{
-				if(Input.check("up"))
+				if(Controls.up)
 				{
 					moveBy(0, -SPEED, GameScene.solidTypes);
 					gfx.flipped = true;
 					if(grounded)
 						gfx.play("walk");
 				}
-				else if(Input.check("down"))
+				else if(Controls.down)
 				{
 					moveBy(0, SPEED, GameScene.solidTypes);
 					gfx.flipped = false;
@@ -156,7 +150,7 @@ class Player extends Entity
 					gfx.play("idle");
 			}
 			
-			if(grounded && Input.pressed(Key.SPACE))
+			if(grounded && Controls.space)
 				spacePressed();
 			
 			sGravSwitchHit = sGravSwitchHit && (collide("sswitch", x, y) != null);

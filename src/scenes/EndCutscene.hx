@@ -7,8 +7,6 @@ import com.haxepunk.graphics.Spritemap;
 import com.haxepunk.graphics.Text;
 import com.haxepunk.tweens.misc.VarTween;
 import com.haxepunk.tweens.motion.LinearMotion;
-import com.haxepunk.utils.Input;
-import com.haxepunk.utils.Key;
 
 import openfl.geom.Rectangle;
 
@@ -111,7 +109,7 @@ yet fiery friends when ...",
 		super.update();
 		if(dialog.scene != null)
 		{
-			if(!dialog.busy && Input.released(Key.SPACE))
+			if(!dialog.busy && Controls.space)
 			{
 				Main.getSound("menuSelect").play();
 				if(dialog.next())

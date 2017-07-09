@@ -31,6 +31,8 @@ class Main extends Engine
 		Data.load("accessibleLevels");
 		// doesn't matter if the file doesn't exist as all bool reads are false by default
 		
+		Controls.init();
+		
 		HXP.scene = new IntroCutscene();
 	}
 
