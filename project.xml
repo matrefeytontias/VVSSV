@@ -13,7 +13,9 @@
 
 	<haxelib name="HaxePunk" />
 
-	<assets path="assets/graphics" rename="graphics" include="*.png|*.jpg" />
+	<assets path="assets/graphics/all" rename="graphics" include="*.png|*.jpg" />
+	<assets path="assets/graphics/desktop" rename="graphics" include="*.png|*.jpg" unless="mobile" />
+	<assets path="assets/graphics/mobile" rename="graphics" include="*.png|*.jpg" if="mobile" />
 	<assets path="assets/audio" rename="audio" include="*.mp3" if="flash" />
 	<assets path="assets/audio" rename="audio" include="*.wav|*.ogg" unless="flash" />
 	<assets path="assets/font" rename="font" include="*.ttf" />

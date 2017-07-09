@@ -1,3 +1,4 @@
+import haxepunk.Entity;
 #if (android || ios)
 import haxepunk.HXP;
 import haxepunk.utils.Touch;
@@ -60,6 +61,11 @@ class Controls
 		return atLeastOneTouch(function (t:Touch) return lr != null ? (t.sceneX > HXP.halfWidth) == lr : (t.sceneY > HXP.halfHeight) == td);
 	}
 	
+	static public function entityHovered(e:Entity) : Bool
+	{
+		return atLeastOneTouch(function (t:Touch) return e.collidePoint(e.x, e.y, t.sceneX, t.sceneY));
+	}
+	
 	static public var left(get, never):Bool;
 	static private function get_left() : Bool { return Controls.atLeastOneTouchInRect(false, null); }
 	static public var right(get, never):Bool;
@@ -118,6 +124,11 @@ class Controls
 		Input.define("up", [ Key.W, Key.Z, Key.UP ]);
 		Input.define("space", [ Key.SPACE ]);
 		Input.define("skip", [ Key.S ]);
+	}
+	
+	static public function entityHovered(e:Entity) : Bool
+	{
+		return e.collidePoint(e.x, e.y, e.scene.mouseX, e.scene.mouseY);
 	}
 	
 	static public var left(get, never):Bool;

@@ -82,7 +82,7 @@ class IntroCutscene extends Scene
 		dialog = new Dialog(dialogText, this, {x:player.x, y:player.y, w:player.width, h:player.height});
 		add(dialog);
 		
-		var skipInstruction = new Text("[S] skip intro", {size:8});
+		var skipInstruction = new Text(#if (android || ios) "Two fingers touch to skip" #else "[S] skip intro" #end, {size:8});
 		var e = addGraphic(skipInstruction);
 		e.x = (HXP.halfWidth - skipInstruction.width) / 2;
 		e.y = HXP.halfHeight * 7 / 8;
@@ -98,7 +98,7 @@ class IntroCutscene extends Scene
 			{
 				if(!dialog.busy)
 				{
-					if(Controls.space)
+					if(Controls.nextDialog)
 					{
 						Main.getSound("menuSelect").play();
 						if(dialog.next())

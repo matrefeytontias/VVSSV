@@ -109,7 +109,7 @@ yet fiery friends when ...",
 		super.update();
 		if(dialog.scene != null)
 		{
-			if(!dialog.busy && Controls.space)
+			if(!dialog.busy && Controls.nextDialog)
 			{
 				Main.getSound("menuSelect").play();
 				if(dialog.next())

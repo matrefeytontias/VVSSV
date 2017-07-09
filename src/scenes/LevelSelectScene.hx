@@ -93,6 +93,7 @@ class VolumeBarWidget extends Entity
 	private var text:Text;
 	private var outline:Image;
 	private var fill:Image;
+	private var moving:Bool;
 	
 	public function new()
 	{
@@ -108,14 +109,19 @@ class VolumeBarWidget extends Entity
 		text.x = (width - text.width) / 2;
 		text.y = -text.height - 4;
 		graphic = new Graphiclist([text, outline, fill]);
+		moving = false;
 	}
 	
 	override public function update()
 	{
-		if(Controls.pressing && collidePoint(x, y, HXP.screen.mouseX, HXP.screen.mouseY))
+		if(Controls.pressed && collidePoint(x, y, HXP.screen.mouseX, HXP.screen.mouseY))
+			moving = true;
+		
+		if(moving)
 		{
-			fill.scaleX = HXP.screen.mouseX - (x + fill.x);
+			fill.scaleX = Math.min(Math.max(0, HXP.screen.mouseX - (x + fill.x)), 100);
 			HXP.volume = fill.scaleX / 100;
+			moving = Controls.pressing;
 		}
 	}
 }

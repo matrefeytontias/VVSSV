@@ -19,7 +19,7 @@ class BackButton extends Entity
 	
 	override public function update()
 	{
-		if(collidePoint(x, y, scene.mouseX, scene.mouseY) && Controls.pressed)
+		if(Controls.entityHovered(this) && Controls.pressed)
 		{
 			HXP.screen.scale = 1;
 			HXP.scene = new scenes.LevelSelectScene();
