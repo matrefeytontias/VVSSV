@@ -43,6 +43,7 @@ class Level extends Entity
 		}
 		type = "level";
 		layer = 1;
+		setHitbox(grid.columns * grid.tileWidth, grid.rows * grid.tileHeight);
 	}
 	
 	override public function added()
