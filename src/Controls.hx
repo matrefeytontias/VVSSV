@@ -63,7 +63,7 @@ class Controls
 	
 	static public function entityHovered(e:Entity) : Bool
 	{
-		return atLeastOneTouch(function (t:Touch) return e.collidePoint(e.x, e.y, t.sceneX, t.sceneY));
+		return atLeastOneTouch(function (t:Touch) return e.collidePoint(e.x - HXP.camera.x * e.graphic.scrollX, e.y - HXP.camera.y * e.graphic.scrollY, t.x, t.y));
 	}
 	
 	static public var left(get, never):Bool;
