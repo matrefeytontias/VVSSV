@@ -3,6 +3,7 @@ package entities;
 import com.haxepunk.Entity;
 import com.haxepunk.HXP;
 import com.haxepunk.Scene;
+import com.haxepunk.graphics.Graphiclist;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.graphics.Spritemap;
 import com.haxepunk.masks.Imagemask;
@@ -48,6 +49,13 @@ class Player extends Entity
 		hurt = true;
 		switchMap();
 	}
+
+#if (android || ios)
+	override public function added()
+	{
+		scene.add(new Underlay());
+	}
+#end
 	
 	public function switchMap()
 	{
@@ -96,6 +104,9 @@ class Player extends Entity
 	private function reset(_:Dynamic)
 	{
 		loadCheckpoint(cast(scene, GameScene));
+#if (android || ios)
+		cast(scene.getInstance("underlay"), Underlay).rotate(true);
+#end
 	}
 	
 	override public function update()
@@ -176,6 +187,9 @@ class Player extends Entity
 		gravityX = -gravityY;
 		gravityY = -t;
 		updateGfx();
+#if (android || ios)
+		cast(scene.getInstance("underlay"), Underlay).rotate();
+#end
 	}
 	
 	private function diagMGravSwitch()
@@ -185,6 +199,9 @@ class Player extends Entity
 		gravityX = gravityY;
 		gravityY = t;
 		updateGfx();
+#if (android || ios)
+		cast(scene.getInstance("underlay"), Underlay).rotate();
+#end
 	}
 	
 	private function updateGfx()
@@ -309,3 +326,32 @@ class Player extends Entity
 		}
 	}
 }
+
+#if (android || ios)
+class Underlay extends Entity
+{
+	private var u1:Image;
+	private var u2:Image;
+	
+	public function new()
+	{
+		super(HXP.halfWidth, HXP.halfHeight);
+		var d = Std.int(Math.max(HXP.screen.width, HXP.screen.height) / 2);
+		u1 = Image.createRect(d, d, 0xff0000, 0.25);
+		u2 = Image.createRect(d, d, 0x0000ff, 0.25); 
+		u1.originY = u2.originY = d / 2;
+		u1.angle = 180;
+		graphic = new Graphiclist([u1, u2]);
+		graphic.scrollX = graphic.scrollY = 0;
+		layer = 1;
+		name = "underlay";
+	}
+	
+	public function rotate(?reset:Bool)
+	{
+		var a = (u1.angle + 90) % 180;
+		u1.angle = reset ? 180 : a + 180;
+		u2.angle = reset ? 0 : a;
+	}
+}
+#end
