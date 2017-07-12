@@ -15,6 +15,7 @@ class BackButton extends Entity
 		graphic = img;
 		layer = 0;
 		setHitbox(img.width, img.height);
+		graphic.scrollX = graphic.scrollY = 0;
 	}
 	
 	override public function update()

@@ -61,7 +61,7 @@ class GameScene extends Scene
 		add(level);
 		add(player);
 		add(new BackButton());
-	}
+	};
 	
 	public function loadLeaf(l:{x:Int, y:Int})
 	{
@@ -76,6 +76,7 @@ class GameScene extends Scene
 	
 	override public function update()
 	{
+		HXP.camera.x = (level.width - HXP.width) / 2;
 		level.updateCollisions(player);
 		super.update();
 		if(!player.hurt)
